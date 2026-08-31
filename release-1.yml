@@ -5,13 +5,15 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'specific'
-    project: 'd4cb9f73-8cc5-477d-8c52-564663d622e4'
-    pipeline: '1'
-    buildVersionToDownload: 'latest'
-    downloadType: 'specific'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
+stages:
+- stage: A
+  jobs:
+  - job: A1
+    steps:
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        buildType: 'specific'
+        project: 'd4cb9f73-8cc5-477d-8c52-564663d622e4'
+        definition: '2'
+        buildVersionToDownload: 'latest'
+        targetPath: '$(Pipeline.Workspace)'
