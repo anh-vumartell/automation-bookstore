@@ -15,10 +15,3 @@ steps:
     downloadType: 'specific'
     downloadPath: '$(System.ArtifactsDirectory)'
 
-- task: AzureRmWebAppDeployment@5
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(e312dbab-2dd8-4a17-bb74-6a928e44c4a9)'
-    appType: 'webApp'
-    WebAppName: 'aBookStore'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
