@@ -17,3 +17,11 @@ stages:
         definition: '2'
         buildVersionToDownload: 'latest'
         targetPath: '$(Pipeline.Workspace)'
+    - task: AzureRmWebAppDeployment@5
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure subscription 1(e312dbab-2dd8-4a17-bb74-6a928e44c4a9)'
+        appType: 'webAppLinux'
+        WebAppName: 'abookstore'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        DeploymentTypeLinux: 'oneDeploy'
